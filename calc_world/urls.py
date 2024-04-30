@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from calculators import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("", views.index),
-    path('', views.calculator, name='calculator'),
+    path("", views.index),
+    path("regular", views.calculator),
+    path('quadratic', views.quadratic_solver)
 ]

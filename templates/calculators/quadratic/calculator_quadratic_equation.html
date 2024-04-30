@@ -1,0 +1,19 @@
+{% extends "base_page.html" %}
+
+{% block page-lead %}
+<h2 class="text-center">Калькулятор квадратных уравнений</h2>
+<p class="text-center fs-4">Данный калькулятор решает уравнения вида a*x<sup>2</sup> + b*x + c = 0,<br/>
+    где a, b, c - свободные коэффициенты, x - неизвестная переменная.
+</p>
+<p class="text-center fs-4">Введите выражение в текстовое поле и нажмите кнопку для расчёта.</p>
+{% endblock %}
+
+{% block content %}
+<div class="calculator fs-4">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Решить</button>
+    </form>
+</div>
+{% endblock %}

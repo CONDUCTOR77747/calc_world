@@ -1,0 +1,29 @@
+{% extends "base_page.html" %}
+
+{% block page-lead %}
+<h2 class="text-center">Обычный калькулятор</h2>
+<p class="text-center">Введите выражение в текстовое поле и нажмите кнопку для расчёта.</p>
+{% endblock %}
+
+{% block content %}
+<div class="calculator fs-3">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="submit">Посчитать</button>
+    </form>
+    {% if result %}
+    <p>Результат: {{ result }}</p>
+    {% endif %}
+</div>
+
+<div>
+<h3>Разрешенные операции:</h3>
+Сложение: +<br/>
+Вычитание: -<br/>
+Умножение: *<br/>
+Деление: /<br/>
+Возведение в степень: **<br/>
+Скобки: ()<br/>
+</div>
+{% endblock %}

@@ -2,33 +2,31 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{% block pagetitle %}{% endblock %}</title>
     <!-- load static -->
     {% load static %}
-    <!-- CSS -->
+    <!-- Bootstrap CSS -->
     <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
     <!-- favicon -->
     <link rel="icon" type="image/png" href="{% static 'favicon_calc_world.png' %}" />
 </head>
-<body>
+<body class="container" style="background-image: url({% static 'background_image_calc_world.svg' %}); height: 100vh">
 <main>
-    <div class="container">
+    <div class="container bg-light">
         <header class="border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <div class="fs-2 mb-3">
-                    <span>Мир калькуляторов</span>
+            <a href="/" class="text-dark text-decoration-none">
+                <div class="fs-2">
+                    <p class="text-center bg-light">Мир калькуляторов</p>
                 </div>
             </a>
         </header>
         <div class="p-5 mb-4 bg-light rounded-3" id="title-box">
             <div class="container-fluid py-5">
-                <h1 class="display-1 fw-bold">{% block page-title %}{% endblock %}</h1>
-                <p class="col-md-8 fs-4">{% block page-lead %}{% endblock %}</p>
+                <p class="fs-4 text-center">{% block page-lead %}{% endblock %}</p>
             </div>
         </div>
         {% block content %}{% endblock %}
-        <footer class="footer pt-3 mt-4 text-muted border-top">
-        <p>Выполнил студент Аммосов Ярослав 2024</p>
+        <footer>
+        <p class="text-dark bg-light text-center">Выполнил студент Аммосов Ярослав 2024</p>
         </footer>
     </div>
 </main>
