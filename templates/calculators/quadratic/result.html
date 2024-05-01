@@ -3,5 +3,9 @@
 {% block content %}
 <h4>Решение квадратного уравнения {{ a }}*x<sup>2</sup> + {{ b }}*x + {{ c }} = 0</h4>
 <p class="fs-3 text-center">{{ result }}</p>
+<form action="/" method="post">
+    {% csrf_token %}
+    <button type="submit">Сохранить результат</button>
+</form>
 <a href="/quadratic" class="text-center">Вернуться к калькулятору</a>
 {% endblock %}

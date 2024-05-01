@@ -5,9 +5,10 @@ Created on Mon Apr 29 15:17:08 2024
 @author: conductor
 """
 
-from django.shortcuts import render
-from .forms import CalculatorForm, QuadraticForm
+from django.shortcuts import render, redirect
+from .calculators_works import CalculatorForm, QuadraticForm
 from .models import Calculator
+from urllib.parse import quote, unquote
 
 def index(request):
     calculators_count = Calculator.objects.count()
@@ -20,6 +21,12 @@ def index(request):
     
     return render(request, "index.html", context=response)
 
+def encode_slashes(url):
+    return url.replace('/', 'slash')
+
+def decode_slashes(url):
+    return url.replace('slash', '/')
+
 def calculator(request):
     form = CalculatorForm()
     result = None
@@ -27,15 +34,26 @@ def calculator(request):
         form = CalculatorForm(request.POST)
         if form.is_valid():
             expression = form.cleaned_data['expression']
-            try:
-                result = float(eval(expression))
-            except Exception as e:
-                result = 'Ошибка: проверьте правильность введённых данных'
-    return render(request, 'calculators/calculator_regular.html', {'form': form, 'result': result})
+            result = float(eval(expression))
+            expression_coded = encode_slashes(quote(f"{result} {expression}"))
+            print("check", f'regular/result/{expression_coded}')
+            return redirect(f'regular/result/{expression_coded}', expression_coded)
+    
+    return render(request, 'calculators/regular/calculator_regular.html', {"form": form})
+
+def calculator_result(request, params):
+    expression_decoded = decode_slashes(unquote(params)).split()
+    response = {
+                "result": expression_decoded[0],
+                "expression": "".join(expression_decoded[1:]),
+                }
+    if request.method == 'POST':
+        # save_result_to_db()
+        print(expression_decoded)
+    return render(request, 'calculators/regular/result.html', context=response)
 
 def quadratic_solver(request):
     calc_page = 'calculators/quadratic/calculator_quadratic_equation.html'
-    result_page = 'calculators/quadratic/result.html'
     form = QuadraticForm(request.POST or None)
     if form.is_valid():
         a = float(form.cleaned_data['a'])
@@ -56,14 +74,25 @@ def quadratic_solver(request):
             result = f"Дискриминант равен нулю. Найден один корень уравнения: x = {round(x, 2)}"
         else:
             result = "Уравнение не имеет действительных корней"
-        
-        response = {
-                    "a": a,
-                    "b": b,
-                    "c": c,
-                    "result": result,
-                    }
-        
-        return render(request, result_page, context=response)
+                
+        expression = quote(f"{a} {b} {c} {result}")
+        return redirect(f'quadratic/result/{expression}', expression)
     
     return render(request, calc_page, {'form': form})
+
+# def save_result_to_db(URL):
+    
+
+def quadratic_solver_result(request, params):
+    expression_decoded = unquote(params).split()
+    response = {
+                "a": expression_decoded[0],
+                "b": expression_decoded[1],
+                "c": expression_decoded[2],
+                "result": " ".join(expression_decoded[3:]),
+                }
+    
+    if request.method == 'POST':
+        # save_result_to_db()
+        print("saved", expression_decoded)
+    return render(request, 'calculators/quadratic/result.html', context=response)

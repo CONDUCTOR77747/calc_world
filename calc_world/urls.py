@@ -21,5 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index),
     path("regular", views.calculator),
-    path('quadratic', views.quadratic_solver)
+    path("regular/result/<str:params>", views.calculator_result),
+    path('quadratic', views.quadratic_solver),
+    path('quadratic/result/<str:params>', views.quadratic_solver_result),
 ]
