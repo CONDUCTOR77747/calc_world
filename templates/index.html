@@ -12,11 +12,10 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Калькуляторы</h5>
-                    <p class="card-text">Калькуляторы для различных целей. Доступно: {{ calculators_count }}</p>
+                    <p class="card-text">Калькуляторы для различных целей.</p>
                     <ul class="list-group" style="max-height: 500px; overflow-y: auto;">
-                        {% for calculator in calculators %}
-                            <li class="list-group-item"><a href={{ calculator.URL }}>{{ calculator.name }}</a></li>
-                        {% endfor %}
+                        <li class="list-group-item"><a href="regular">Обычный (строчный)</a></li>
+                        <li class="list-group-item"><a href="quadratic">Квадратные уравнения</a></li>
                 </div>
             </div>
         </div>
@@ -50,11 +49,6 @@
                             </table>
                           </div>
                     </div>
-                    
-                    <ul class="list-group" style="max-height: 500px; overflow-y: auto;">
-                        {% for solution in solutions %}
-                            <li class="list-group-item"><a href={{ solution.name }}>{{ calculator.name }}</a></li>
-                        {% endfor %}
                 </div>
             </div>
         </div>

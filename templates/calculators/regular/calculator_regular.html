@@ -17,7 +17,6 @@
 {% block content %}
 <div class="fs-3 row">
     <form class="col" method="post">
-        {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" name="submit" class="col">Посчитать</button>
     </form>
