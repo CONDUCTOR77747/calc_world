@@ -26,7 +26,7 @@ def encode_slashes(str_: str) -> str:
     return str_.replace('/', 'slash')
 
 
-def decode_slashes(url: str) -> str:
+def decode_slashes(str_: str) -> str:
     """
     Replaces words "slash" in string with slashes
 
@@ -41,7 +41,7 @@ def decode_slashes(url: str) -> str:
         string object.
 
     """
-    return url.replace('slash', '/')
+    return str_.replace('slash', '/')
 
 
 def save_solution(model: Type[Solution], url: str) -> None:
