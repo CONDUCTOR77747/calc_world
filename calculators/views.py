@@ -3,16 +3,21 @@ from urllib.parse import quote, unquote
 from django.http import HttpResponseRedirect
 from .models import Solution
 from .forms import CalculatorForm, QuadraticForm
-from .utils import encode_slashes, decode_slashes, save_solution
+from .utils import encode_slashes, decode_slashes, save_solution, reset_table
 
-def index(request):  
+
+def index(request):
     solutions_count = Solution.objects.count()
     solutions = Solution.objects.all().order_by('-id')
     response = {
         "solutions_count": solutions_count,
         "solutions": solutions,
     }
+    if request.method == 'POST':
+        reset_table(Solution)
+        return HttpResponseRedirect("/")
     return render(request, "index.html", context=response)
+
 
 def calculator(request):
     form = CalculatorForm()
@@ -35,7 +40,7 @@ def calculator_result(request, params):
         "expression": "".join(expression_decoded[1:]),
     }
     if request.method == 'POST':
-        save_solution(request)
+        save_solution(Solution, request.build_absolute_uri())
         return HttpResponseRedirect("/")
     return render(request, 'calculators/regular/result.html', context=response)
 
@@ -79,6 +84,6 @@ def quadratic_solver_result(request, params):
     }
 
     if request.method == 'POST':
-        save_solution(request)
+        save_solution(Solution, request.build_absolute_uri())
         return HttpResponseRedirect("/")
     return render(request, 'calculators/quadratic/result.html', context=response)
