@@ -46,12 +46,9 @@ def test_save_solution() -> None:
     None.
 
     """
-    solution = Solution.objects.create(
-        time=timezone.now(),
-        URL="https://test.com"
-    )
-
-    saved_solution = Solution.objects.get(id=solution.id)
+    url = "https://test.com"
+    save_solution(Solution, url)
+    saved_solution = Solution.objects.get(id=1)
     assert saved_solution.time is not None
     assert saved_solution.URL == "https://test.com"
 

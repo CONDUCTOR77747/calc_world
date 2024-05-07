@@ -2,6 +2,7 @@
 Forms for calculators
 """
 import re
+from simpleeval import simple_eval
 from django import forms
 
 
@@ -13,7 +14,7 @@ class CalculatorForm(forms.Form):
 
     def clean_expression(self) -> str:
         """
-
+        Validation function of user input for regular calculator.
 
         Raises
         ------
@@ -32,11 +33,11 @@ class CalculatorForm(forms.Form):
             raise forms.ValidationError('Разрешены только числа и операторы')
 
         try:
-            eval(expression, {'__builtins__': {}}, {})
-        except Exception:
+            simple_eval(expression)
+        except Exception as e:
             raise forms.ValidationError(
                 'Нельзя использовать несколько \
-операторов подряд или не закрыты скобки')
+операторов подряд или не закрыты скобки') from e
 
         return expression
 
