@@ -1,5 +1,6 @@
 """
-Model for storing solution history list in database
+Author: Ammosov Yaroslav
+Description: Model for storing solution history list in database
 """
 from django.db import models
 from django.db.models.manager import Manager

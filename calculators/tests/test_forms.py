@@ -1,13 +1,14 @@
 """
-This module contains test for forms
+Author: Ammosov Yaroslav
+Description: This module contains test for forms
 """
 
 from ..forms import CalculatorForm, QuadraticForm
 
 
-def test_valid_expression() -> None:
+def test_reg_calc_valid() -> None:
     """
-
+    Test regular calculator with valid data
 
     Returns
     -------
@@ -19,9 +20,9 @@ def test_valid_expression() -> None:
     assert form.is_valid()
 
 
-def test_invalid_expression() -> None:
+def test_reg_calc_invalid() -> None:
     """
-
+    Test regular calculator with invalid data
 
     Returns
     -------
@@ -38,9 +39,9 @@ def test_invalid_expression() -> None:
     assert 'Разрешены только числа и операторы' in form2.errors['expression']
 
 
-def test_valid_coefficients() -> None:
+def test_quad_calc_valid() -> None:
     """
-
+    Test qudaratic calculator with valid data
 
     Returns
     -------
@@ -52,9 +53,9 @@ def test_valid_coefficients() -> None:
     assert form.is_valid()
 
 
-def test_invalid_coefficients() -> None:
+def test_quad_calc_invalid() -> None:
     """
-
+    Test qudaratic calculator with invalid data
 
     Returns
     -------

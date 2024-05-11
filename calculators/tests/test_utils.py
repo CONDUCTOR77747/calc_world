@@ -1,9 +1,9 @@
 """
-This module contains test for utils
+Author: Ammosov Yaroslav
+Description: This module contains test for utils
 """
 
 import pytest
-from django.utils import timezone
 from ..models import Solution
 from ..utils import encode_slashes, decode_slashes, save_solution, reset_table
 

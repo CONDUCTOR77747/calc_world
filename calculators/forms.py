@@ -1,6 +1,8 @@
 """
-Forms for calculators
+Author: Ammosov Yaroslav
+Description: Forms for calculators
 """
+
 import re
 from simpleeval import simple_eval
 from django import forms
@@ -27,7 +29,7 @@ class CalculatorForm(forms.Form):
             mathematical  expression.
 
         """
-        expression = self.cleaned_data['expression']
+        expression = str(self.cleaned_data['expression'])
 
         if not re.match(r'^[0-9+\-*\/().\s]*$', expression):
             raise forms.ValidationError('Разрешены только числа и операторы')
@@ -39,7 +41,7 @@ class CalculatorForm(forms.Form):
                 'Нельзя использовать несколько \
 операторов подряд или не закрыты скобки') from e
 
-        return expression
+        return str(expression)
 
 
 class QuadraticForm(forms.Form):

@@ -1,5 +1,6 @@
 """
-This module contains test for models
+Author: Ammosov Yaroslav
+Description: This module contains test for models
 """
 
 import pytest
