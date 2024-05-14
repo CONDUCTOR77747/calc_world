@@ -22,6 +22,6 @@ urlpatterns = [
     path("", views.index),
     path("regular", views.calculator),
     path("regular/result/<str:params>", views.calculator_result),
-    path('quadratic', views.quadratic_solver),
+    path('quadratic/', views.quadratic_solver),
     path('quadratic/result/<str:params>', views.quadratic_solver_result),
 ]

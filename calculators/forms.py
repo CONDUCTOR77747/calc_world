@@ -37,9 +37,8 @@ class CalculatorForm(forms.Form):
         try:
             simple_eval(expression)
         except Exception as e:
-            raise forms.ValidationError(
-                'Нельзя использовать несколько \
-операторов подряд или не закрыты скобки') from e
+            error_str = 'Ошибка: выражение слишком сложное или содержит ошибку'
+            raise forms.ValidationError(error_str) from e
 
         return str(expression)
 

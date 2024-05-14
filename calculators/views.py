@@ -5,26 +5,26 @@ Description: Views file contains render functions for html pages
 
 from urllib.parse import quote, unquote
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from simpleeval import simple_eval
 from .models import Solution
 from .forms import CalculatorForm, QuadraticForm
 from .utils import encode_slashes, decode_slashes, save_solution, reset_table
 
 
-def index(request):
+def index(request: HttpRequest) -> HttpResponse:
     """
     Render and update main page
 
     Parameters
     ----------
-    request : TYPE
-        DESCRIPTION.
+    request : HttpRequest
+        The HTTP request.
 
     Returns
     -------
-    TYPE
-        DESCRIPTION.
+    HttpResponse
+        The rendered response.
 
     """
     solutions_count = Solution.objects.count()
@@ -39,19 +39,19 @@ def index(request):
     return render(request, "index.html", context=response)
 
 
-def calculator(request):
+def calculator(request: HttpRequest) -> HttpResponse:
     """
     Render and update regular calculator page
 
     Parameters
     ----------
-    request : TYPE
-        DESCRIPTION.
+    request : HttpRequest
+        The HTTP request.
 
     Returns
     -------
-    TYPE
-        DESCRIPTION.
+    HttpResponse
+        The rendered response.
 
     """
     form = CalculatorForm()
@@ -69,21 +69,21 @@ def calculator(request):
                   {"form": form})
 
 
-def calculator_result(request, params):
+def calculator_result(request: HttpRequest, params: str) -> HttpResponse:
     """
     Render and update regular calculator result page
 
     Parameters
     ----------
-    request : TYPE
-        DESCRIPTION.
-    params : TYPE
-        DESCRIPTION.
+    request : HttpRequest
+        The HTTP request.
+    params : str
+        String containing the expression to be evaluated.
 
     Returns
     -------
-    TYPE
-        DESCRIPTION.
+    HttpResponse
+        The rendered response.
 
     """
     expression_decoded = decode_slashes(unquote(params)).split()
@@ -97,19 +97,19 @@ def calculator_result(request, params):
     return render(request, 'calculators/regular/result.html', context=response)
 
 
-def quadratic_solver(request):
+def quadratic_solver(request: HttpRequest) -> HttpResponse:
     """
     Render and update quadratic calculator page
 
     Parameters
     ----------
-    request : TYPE
-        DESCRIPTION.
+    request : HttpRequest
+        The HTTP request.
 
     Returns
     -------
-    TYPE
-        DESCRIPTION.
+    HttpResponse
+        The rendered response.
 
     """
     calc_page = 'calculators/quadratic/calculator_quadratic_equation.html'
@@ -132,31 +132,31 @@ x_2 = {round(x_2, 2)}"
         elif discriminant == 0:
             single_x = -coeff_b / (2 * coeff_a)
             result = f"Дискриминант равен нулю. Найден один \
-корень уравнения: single_x = {round(single_x, 2)}"
+корень уравнения: x = {round(single_x, 2)}"
         else:
             result = "Уравнение не имеет действительных корней"
 
         expression = quote(f"{coeff_a} {coeff_b} {coeff_c} {result}")
-        return redirect(f'quadratic/result/{expression}', expression)
+        return redirect(f'/quadratic/result/{expression}', expression)
 
     return render(request, calc_page, {'form': form})
 
 
-def quadratic_solver_result(request, params):
+def quadratic_solver_result(request: HttpRequest, params: str) -> HttpResponse:
     """
     Render and update quadratic calculator result page
 
     Parameters
     ----------
-    request : TYPE
-        DESCRIPTION.
-    params : TYPE
-        DESCRIPTION.
+    request : HttpRequest
+        The HTTP request.
+    params : str
+        String containing the expression to be evaluated.
 
     Returns
     -------
-    TYPE
-        DESCRIPTION.
+    HttpResponse
+        The rendered response.
 
     """
     expression_decoded = unquote(params).split()

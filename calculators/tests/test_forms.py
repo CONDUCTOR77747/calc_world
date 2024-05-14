@@ -32,8 +32,8 @@ def test_reg_calc_invalid() -> None:
     invalid_expression = '2 + * 3'
     form = CalculatorForm(data={'expression': invalid_expression})
     assert not form.is_valid()
-    assert 'Нельзя использовать несколько операторов \
-подряд или не закрыты скобки' in form.errors['expression']
+    assert ('Ошибка: выражение слишком сложное или содержит ошибку'
+            in form.errors['expression'])
     invalid_expression2 = 'Hello World!'
     form2 = CalculatorForm(data={'expression': invalid_expression2})
     assert 'Разрешены только числа и операторы' in form2.errors['expression']

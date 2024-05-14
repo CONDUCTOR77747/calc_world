@@ -1,6 +1,7 @@
 """
 Author: Ammosov Yaroslav
-Description: Model contains functions for encoding url, saving and resetting database
+Description: Model contains functions for encoding url, saving and
+             resetting database
 """
 
 from typing import Type
