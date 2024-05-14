@@ -15,7 +15,7 @@ test:
 .PHONY: runserver
 runserver:
 	@echo "Running Django server..."
-	python manage.py runserver
+	python manage.py runserver --insecure
 
 .PHONY: all
 all: lint test runserver
