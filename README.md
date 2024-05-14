@@ -4,9 +4,10 @@ The site was developed as part of a training course.<br />
 Author: Ammosov Yaroslav
 
 ## Launching
-1. Install all dependencies from `environment.yml` file. For conda:<br />
+1. Clone/download this repository
+2. Install all dependencies from `environment.yml` file. For conda:<br />
 `conda env create -f environment.yml`
-2. Launch the Django server using:<br />
+3. Launch the Django server using:<br />
 `make runserver`
 
 ## Dependencies and tools
