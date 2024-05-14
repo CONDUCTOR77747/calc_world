@@ -35,6 +35,7 @@ This website uses:<br />
 `make test`
 
 ## Screenshots and Demonstration
+Discription of main features and pages of this project.
 ### Main page
 You can choose calculator and access history of calcultions on main page. Also you can clear your calculation history by pressing the button.<br />
 There are two calculators available now:<br />
@@ -42,7 +43,7 @@ There are two calculators available now:<br />
 2. Quadratic equations calculator
 ![index](https://github.com/CONDUCTOR77747/calc_world/assets/55601049/cef896d7-543e-4569-9b15-ce6506486875)
 
-### Regular calculator
+### Regular calculator page
 On this page you can enter your expression:
 ![regular_calc](https://github.com/CONDUCTOR77747/calc_world/assets/55601049/35d1464b-217a-4bff-93aa-fedd943855a9)
 
@@ -55,7 +56,7 @@ There are some examples of invalid input:
 ![regular_calc_error2](https://github.com/CONDUCTOR77747/calc_world/assets/55601049/d45627c2-5f5c-4bfa-8077-34a669619a42)
 ![regular_calc_error3](https://github.com/CONDUCTOR77747/calc_world/assets/55601049/15d8eeb5-da6d-456a-af71-b1e9d0107153)
 
-### Quadratic equations calculator
+### Quadratic equations calculator page
 You can enter coefficients:
 ![quadratic_calc](https://github.com/CONDUCTOR77747/calc_world/assets/55601049/d50c39ac-2b04-4b4a-9951-935b2f5b2573)
 After pressing submit button the result will show up:
