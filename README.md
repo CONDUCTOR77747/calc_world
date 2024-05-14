@@ -3,17 +3,17 @@ A website contains various mathematical calculators written in Python using Djan
 The site was developed as part of a training course.
 
 ## Launching
-1. Install all dependencies from 'environment.yml' file. For conda:
-'conda env create -f environment.yml'
+1. Install all dependencies from `environment.yml` file. For conda:
+`conda env create -f environment.yml`
 2. Launch the Django server using:
-'make runserver'
+`make runserver`
 
-## Code
+## Code Testing
 To lint project use:
-'make lint'
+`make lint`
 
 To test project via pytest use:
-'make test'
+`make test`
 
 To lint, test and run project use:
-'make all'
+`make all`
