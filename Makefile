@@ -10,17 +10,12 @@ lint:
 .PHONY: test
 test:
 	@echo "Running tests..."
-	pytest
-
-.PHONY: coverage
-coverage:
-	@echo "Running coverage tests..."
 	pytest --cov
 
 .PHONY: runserver
 runserver:
-	@echo "Running Django development server..."
+	@echo "Running Django server..."
 	python manage.py runserver
 
 .PHONY: all
-all: lint test coverage runserver
+all: lint test runserver
