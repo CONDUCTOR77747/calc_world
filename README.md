@@ -13,7 +13,7 @@ The site was developed as part of a training course.<br />
 3. Launch the Django server using:<br />
 `make runserver`
 
-## Dependencies and tools
+## Dependencies and Tools
 This website uses:<br />
 1. **conda** environment, however you can install packages from `environment.yml` file to any environment.
 2. **make** system for short commands to test and run the code
