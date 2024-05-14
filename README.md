@@ -34,6 +34,9 @@ This website uses:<br />
 * To test project via pytest use:<br />
 `make test`
 
+* To run Django server use:<br />
+`make runserver`
+
 ## Screenshots and Demonstration
 Discription of main features and pages of this project.
 ### Main page
