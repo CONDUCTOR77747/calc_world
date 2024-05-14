@@ -36,7 +36,7 @@ This website uses:<br />
 
 ## Screenshots and Demonstration
 ### Main page
-You can choose calculator and access history of calcultions on main page.<br />
+You can choose calculator and access history of calcultions on main page. Also you can clear you calculation history by pressing the button.<br />
 There are two calculators available now:<br />
 1. Regular (text form) calculator
 2. Quadratic equations calculator
