@@ -22,11 +22,11 @@ This website uses:<br />
 8. [**simpeeval**](https://github.com/danthedeckie/simpleeval) as secure replacement for `eval` function
 
 ## Code Testing
-To lint, test and run project use:<br />
+* To lint, test and run project use:<br />
 `make all`
 
-To lint project use:<br />
+* To lint project use:<br />
 `make lint`
 
-To test project via pytest use:<br />
+* To test project via pytest use:<br />
 `make test`
