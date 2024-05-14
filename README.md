@@ -34,7 +34,7 @@ This website uses:<br />
 * To test project via pytest use:<br />
 `make test`
 
-## Screeshots and Demonstration
+## Screenshots and Demonstration
 ### Main page
 You can choose calculator and access history of calcultions on main page.<br />
 There are two calculators available now:<br />
