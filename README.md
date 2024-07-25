@@ -1,5 +1,5 @@
 # World of Сalculators
-A website contains various mathematical calculators written in Python using Django framework.<br />
+The website contains various mathematical calculators written in Python using Django framework.<br />
 The site was developed as part of a training course.<br />
 <br />
 **Author:** Ammosov Yaroslav<br />
